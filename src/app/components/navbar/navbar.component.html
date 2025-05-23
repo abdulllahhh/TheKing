@@ -1,0 +1,30 @@
+<nav class="bg-navy">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="text-gold text-2xl font-luxury font-bold">
+          TheKing Safety
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a *ngFor="let link of navigationLinks"
+           [href]="link.path"
+           class="text-white hover:text-gold transition-colors duration-200">
+          {{link.label}}
+        </a>
+      </div>
+
+      <!-- Quote Button - Fixed contrast issue -->
+      <div class="flex items-center">
+        <button 
+                
+                aria-label="Request a Quote">
+          Request Quote
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

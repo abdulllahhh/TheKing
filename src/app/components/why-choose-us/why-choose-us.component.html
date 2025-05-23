@@ -1,0 +1,21 @@
+<section class="py-20 bg-navy text-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-luxury font-bold mb-4">
+        Why Choose TheKing Safety
+      </h2>
+      <p class="text-xl text-gray-300">
+        Trusted by industry leaders for premium safety solutions
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div *ngFor="let feature of features" 
+           class="p-6 rounded-xl bg-navy-800 hover:bg-navy-700 transition-all duration-300">
+        <mat-icon class="text-gold text-4xl mb-4">{{feature.icon}}</mat-icon>
+        <h3 class="text-xl font-bold mb-2">{{feature.title}}</h3>
+        <p class="text-gray-300">{{feature.description}}</p>
+      </div>
+    </div>
+  </div>
+</section>

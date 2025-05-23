@@ -30,7 +30,7 @@ export class MockDataService {
     },
     {
       id: 'GLOVE-001',
-      imageUrl: 'assets/images/premium-gloves.jpg',
+      imageUrl: './assets/images/premium-gloves.jpg',
       name: 'Premium Leather Safety Gloves',
       description: 'Luxury grain leather gloves with enhanced grip and cut resistance. Perfect for executive handling and inspection.',
       price: 89.99,
@@ -85,7 +85,7 @@ export class MockDataService {
     },
     {
       id: 'GLASS-001',
-      imageUrl: './assets/images/executive-glasses.jpg',
+      imageUrl: 'assets/images/exec-glasses.jpg',
       name: 'Executive Safety Glasses',
       description: 'Sophisticated safety glasses with blue light protection and anti-fog coating.',
       price: 159.99,

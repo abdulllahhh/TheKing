@@ -17,7 +17,10 @@ export class ProductGridComponent implements OnInit {
 
   ngOnInit(): void {
     this.mockDataService.getProducts().subscribe(
-      products => this.products = products
+      products => {
+        this.products = products,
+        console.log(products)
+      },
     );
   }
 

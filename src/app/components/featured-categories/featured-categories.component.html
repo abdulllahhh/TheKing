@@ -1,0 +1,25 @@
+<section class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-luxury font-bold text-navy mb-4">
+        Premium Safety Categories
+      </h2>
+      <p class="text-gray-600 text-lg">
+        Explore our comprehensive range of executive safety solutions
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <mat-card *ngFor="let category of categories"
+                class="bg-white rounded-xl shadow-luxe hover:shadow-2xl transition-all duration-300 cursor-pointer">
+        <img [src]="category.image" 
+             [alt]="category.title"
+             class="w-full h-48 object-cover rounded-t-xl">
+        <mat-card-content class="p-6">
+          <h3 class="text-xl font-bold text-navy mb-2">{{category.title}}</h3>
+          <p class="text-gray-600">{{category.description}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>

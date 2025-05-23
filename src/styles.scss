@@ -2,7 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  font-family: 'Inter', 'serif', sans-serif;
+// Base styles
+html, body { 
+  height: 100%;
+  margin: 0;
 }
 
+body { 
+  margin: 0; 
+  font-family: 'Inter', serif;
+}
+
+// Material Design overrides
+.mat-mdc-button,
+.mat-mdc-raised-button,
+.mat-mdc-outlined-button,
+.mat-mdc-unelevated-button {
+  @apply rounded-xl font-bold;
+}
+
+// Custom utility classes
+.container {
+  @apply max-w-7xl mx-auto px-4;
+}
+
+// Custom Material Design shadows
+.shadow-luxe {
+  box-shadow: 0 6px 32px 0 rgba(24,34,58,0.16);
+}
+
+.transition-luxe {
+  @apply transition-all duration-200 ease-in-out;
+}
