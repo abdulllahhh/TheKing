@@ -1,0 +1,56 @@
+<mat-card
+  class="bg-white rounded-xl shadow-luxe overflow-hidden flex flex-col transition-all duration-200 hover:shadow-2xl group border border-gray-100"
+  tabindex="0"
+  [attr.aria-label]="'Product Card: ' + name"
+  [attr.aria-describedby]="tooltipDetails ? 'productTooltip' : null"
+>
+  <div class="relative w-full aspect-w-4 aspect-h-3 bg-gray-100 overflow-hidden">
+    <img
+      [src]="imageUrl"
+      [alt]="name"
+      class="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105"
+      loading="lazy"
+      [matTooltip]="tooltipDetails"
+      matTooltipPosition="above"
+      [matTooltipDisabled]="!tooltipDetails"
+      id="productTooltip"
+    />
+    <ng-container *ngIf="statusLabel">
+      <span class="absolute top-2 left-2 bg-[#FFB100] text-navy text-xs font-bold uppercase px-3 py-1 rounded-xl shadow"
+        >{{ statusLabel }}</span>
+    </ng-container>
+    <ng-container *ngIf="!inStock">
+      <span class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold uppercase px-3 py-1 rounded-xl shadow"
+        >Out of stock</span>
+    </ng-container>
+  </div>
+  <mat-card-content class="p-6 flex flex-col gap-3 flex-1">
+    <h2 class="text-xl md:text-2xl font-bold font-luxury tracking-tight truncate text-navy mb-1">
+      {{ name }}
+    </h2>
+    <p class="text-base md:text-lg text-gray-600 font-light line-clamp-2">
+      {{ description }}
+    </p>
+    <div class="mt-2 mb-1">
+      <span *ngIf="price !== undefined; else contactQuote" class="text-xl font-semibold text-[#FFB100]">
+        ${{ price | number : '1.2-2' }}
+      </span>
+      <ng-template #contactQuote>
+        <span class="text-base text-navy font-semibold italic">Contact for quote</span>
+      </ng-template>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="p-6 pt-0">
+    <button
+      mat-raised-button
+      type="button"
+      class="w-full bg-[#FFB100] text-navy font-bold text-lg rounded-xl py-3 shadow transition duration-150 hover:shadow-xl hover:bg-[#ffd580] focus-visible:ring-2 focus-visible:ring-[#FFB100] focus-visible:ring-offset-2 outline-none"
+      (click)="addToQuote.emit()"
+      [disabled]="!inStock"
+      [attr.aria-label]="'Add ' + name + ' to quote'"
+    >
+      <span *ngIf="inStock; else outOfStock">Add to Quote</span>
+      <ng-template #outOfStock>Unavailable</ng-template>
+    </button>
+  </mat-card-actions>
+</mat-card>
