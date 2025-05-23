@@ -16,7 +16,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent {
-  tooltipDetails: string | null = null;
+  @Input()  tooltipDetails: string | null = null;
   @Input() inStock: boolean = true;
   @Input() statusLabel?: string;
   @Input() imageUrl!: string;
