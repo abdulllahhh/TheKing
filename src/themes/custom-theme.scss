@@ -1,85 +1,85 @@
 @use '@angular/material' as mat;
-
-// Include the common styles for Angular Material
-@include mat.core();
+@use 'sass:map';
 
 // Define custom palettes
 $navy-palette: (
-  50: #e3e7ed,
-  100: #b9c3d2,
-  200: #8a9bb4,
-  300: #5b7295,
-  400: #375480,
-  500: #18223a,
-  600: #151e34,
-  700: #11192c,
-  800: #0e1424,
-  900: #080c17,
+  50: #E3E7EC,
+  100: #B9C3D0,
+  200: #8A9BB1,
+  300: #5B7292,
+  400: #37547A,
+  500: #18223A, // your main navy color
+  600: #151E34,
+  700: #11192C,
+  800: #0E1424,
+  900: #080C17,
   contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #ffffff,
-    400: #ffffff,
-    500: #ffffff,
-    600: #ffffff,
-    700: #ffffff,
-    800: #ffffff,
-    900: #ffffff,
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
   )
 );
 
 $gold-palette: (
-  50: #fff8e1,
-  100: #ffecb3,
-  200: #ffe082,
-  300: #ffd54f,
-  400: #ffca28,
-  500: #ffb100,
-  600: #ffa000,
-  700: #ff8f00,
-  800: #ff7f00,
-  900: #ff6000,
+  50: #FFF8E1,
+  100: #FFECB3,
+  200: #FFE082,
+  300: #FFD54F,
+  400: #FFCA28,
+  500: #C4A052, // your main gold color
+  600: #FFB100,
+  700: #FFA000,
+  800: #FF8F00,
+  900: #FF6F00,
   contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #000000,
-    400: #000000,
-    500: #000000,
-    600: #000000,
-    700: #000000,
-    800: #000000,
-    900: #ffffff,
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(black, 0.87),
+    900: white,
   )
 );
 
-// Create the palettes
-$my-primary: mat.define-palette($navy-palette, 500);
-$my-accent: mat.define-palette($gold-palette, 500);
+// Define the theme colors
+$my-primary: mat.define-palette($navy-palette);
+$my-accent: mat.define-palette($gold-palette);
 $my-warn: mat.define-palette(mat.$red-palette);
 
-// Create the theme object
-$my-theme: mat.define-light-theme({
-  color: {
-    primary: $my-primary,
-    accent: $my-accent,
-    warn: $my-warn
-  }
-});
+// Create color configuration
+$my-theme-color-config: mat.get-color-config(prefix);
 
-// Apply the theme to all Angular Material components
+// Create typography configuration
+$my-theme-typography-config: mat.define-typography-config(prefix);
+
+// Create density configuration
+$my-theme-density-config: 0;
+
+// Create the theme object
+$my-theme: (
+  color: $my-theme-color-config,
+  typography: $my-theme-typography-config,
+  density: $my-theme-density-config
+);
+
+// Include theme styles
 @include mat.all-component-themes($my-theme);
 
-// Custom CSS variables for use in your application
+// Optional: Add custom CSS variables for use with Tailwind
 :root {
-  --color-primary: #{mat.get-color-from-palette($my-primary, 500)};
-  --color-primary-lighter: #{mat.get-color-from-palette($my-primary, 100)};
-  --color-primary-darker: #{mat.get-color-from-palette($my-primary, 700)};
-  
-  --color-accent: #{mat.get-color-from-palette($my-accent, 500)};
-  --color-accent-lighter: #{mat.get-color-from-palette($my-accent, 100)};
-  --color-accent-darker: #{mat.get-color-from-palette($my-accent, 700)};
-  
-  --color-warn: #{mat.get-color-from-palette($my-warn, 500)};
+  --color-navy: #{mat.get-color-from-palette($my-primary, 500)};
+  --color-gold: #{mat.get-color-from-palette($my-accent, 500)};
+  --color-navy-light: #{mat.get-color-from-palette($my-primary, 100)};
+  --color-gold-light: #{mat.get-color-from-palette($my-accent, 100)};
 }

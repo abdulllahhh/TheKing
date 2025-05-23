@@ -37,6 +37,11 @@
               "src/themes/custom-theme.scss",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/themes"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -99,8 +104,16 @@
               "src/themes/custom-theme.scss",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/themes"
+              ]
+            },
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
